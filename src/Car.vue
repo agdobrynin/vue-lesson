@@ -8,12 +8,7 @@
 <script>
     export default {
         name: "Car",
-        data() {
-            return {
-                carName: "Ford",
-                carYear: 2015,
-            }
-        },
+        props: ["carName", "carYear"],
     }
 </script>
 
