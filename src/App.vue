@@ -1,7 +1,14 @@
 <template>
     <div>
         <h1>{{ msg }}</h1>
-        <app-car v-for="car in cars" :carName="car.name" :carYear="car.year"></app-car>
+        <h4>Cars:</h4>
+        <ul>
+            <li v-for="car in cars">{{car.name}}</li>
+        </ul>
+        <app-car v-for="car in cars"
+                 :carName="car.name" :carYear="car.year"
+                 v-on:changedCarName="car.name = $event"
+        ></app-car>
         <app-car></app-car>
     </div>
 </template>

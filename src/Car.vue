@@ -2,6 +2,7 @@
     <div>
         <h1>{{ printCarName }}</h1>
         <p>{{ printCarYear }}</p>
+        <button @click="changeName">new name</button>
     </div>
 </template>
 
@@ -19,6 +20,12 @@
                 type: Number,
                 default: new Date().getFullYear(),
             },
+        },
+        methods: {
+            changeName() {
+                this.carName = "Lotus";
+                this.$emit('changedCarName', this.carName);
+            }
         },
         computed: {
             printCarName() {
