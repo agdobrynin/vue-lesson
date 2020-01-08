@@ -1,8 +1,7 @@
 <template>
     <div>
         <h1>{{ msg }}</h1>
-        <app-car :carName="carName" :carYear="carYear"></app-car>
-        <app-car :carName="carName2" :carYear="carYear2"></app-car>
+        <app-car v-for="car in cars" :carName="car.name" :carYear="car.year"></app-car>
         <app-car></app-car>
     </div>
 </template>
@@ -14,10 +13,10 @@
         data: function () {
             return {
                 msg: "Welcome to Your Vue.js App",
-                carName: "Fiat",
-                carYear: 2012,
-                carName2: "Ferarri",
-                carYear2: 2017,
+                cars: [
+                    {name: "Fiat", year: 2012},
+                    {name: "Bugatti", year: 2018},
+                ],
 
             }
         },
