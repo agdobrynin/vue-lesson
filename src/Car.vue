@@ -2,24 +2,30 @@
     <div>
         <h1>{{ printCarName }}</h1>
         <p>{{ printCarYear }}</p>
-        <button @click="changeName">new name</button>
+        <button @click="changeName" v-if="carName !== defaultCarName">new name</button>
     </div>
 </template>
 
 <script>
     import Helpers from "./utils/Helpers";
+    const defaultCarName = "Train";
 
     export default {
         name: "Car",
         props: {
             carName: {
                 type: String,
-                default: "Train",
+                default: defaultCarName,
             },
             carYear: {
                 type: Number,
                 default: new Date().getFullYear(),
             },
+        },
+        data: function () {
+            return {
+                defaultCarName: defaultCarName,
+            }
         },
         methods: {
             changeName() {
