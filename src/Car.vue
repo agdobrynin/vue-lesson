@@ -10,14 +10,23 @@
 
     export default {
         name: "Car",
-        props: ["carName", "carYear"],
+        props: {
+            carName: {
+                type: String,
+                default: "Train",
+            },
+            carYear: {
+                type: Number,
+                default: new Date().getFullYear(),
+            },
+        },
         computed: {
             printCarName() {
                 return this.carName.toUpperCase();
             },
             printCarYear() {
                 const age = new Date().getFullYear() - this.carYear;
-                const ageText = Helpers.declensionOfNumber(age , ["год", "года", "лет"]);
+                const ageText = Helpers.declensionOfNumber(age, ["год", "года", "лет"]);
                 return `${this.carYear} год выпуска, возраст ${ageText}`;
             }
         }
