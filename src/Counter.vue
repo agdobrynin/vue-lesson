@@ -5,12 +5,19 @@
 </template>
 
 <script>
+    import {eventEmmiter} from "./main";
+
     export default {
         name: "Counter",
-        props: {
-            counter: {
-                type: Number
+        data() {
+            return {
+                counter: 0,
             }
+        },
+        created() {
+            eventEmmiter.$on('addCarToStock', () => {
+                this.counter++
+            });
         },
     }
 </script>
@@ -19,6 +26,7 @@
     span {
         color: red;
     }
+
     strong {
         color: green;
     }

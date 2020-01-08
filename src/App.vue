@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>{{ msg }}</h1>
-        <app-counter :counter="counter"></app-counter>
+        <app-counter></app-counter>
         <h4>Cars:</h4>
         <ul>
             <li v-for="car in cars">{{car.name}}</li>
@@ -28,7 +28,6 @@
                     {name: "Fiat", year: 2012},
                     {name: "Bugatti", year: 2018},
                 ],
-                counter: 0,
             }
         },
         components: {

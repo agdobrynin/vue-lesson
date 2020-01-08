@@ -4,13 +4,14 @@
         <p>{{ printCarYear }}</p>
         <div v-if="carName !== defaultCarName">
             <button @click="changeName">new name</button>
-            <button @click="addCar">Add car</button>
+            <button @click="addCar">Add car to stock</button>
         </div>
     </div>
 </template>
 
 <script>
     import Helpers from "./utils/Helpers";
+    import {eventEmmiter} from "./main";
 
     const defaultCarName = "Train";
 
@@ -25,10 +26,6 @@
                 type: Number,
                 default: new Date().getFullYear(),
             },
-            counter: {
-                type: Number,
-                default: 0,
-            }
         },
         data() {
             return {
@@ -41,7 +38,7 @@
                 this.$emit('changedCarName', this.carName);
             },
             addCar() {
-                this.$emit('addCarToStock', this.counter += 1);
+                eventEmmiter.$emit("addCarToStock");
             }
         },
         computed: {
