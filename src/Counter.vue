@@ -1,6 +1,6 @@
 <template>
     <div>
-        Total cars: <span>{{ counter }}</span>
+        <span>Total cars:</span> <strong>{{ counter }}</strong>
     </div>
 </template>
 
@@ -18,5 +18,8 @@
 <style scoped>
     span {
         color: red;
+    }
+    strong {
+        color: green;
     }
 </style>
