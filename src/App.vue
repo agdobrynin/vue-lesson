@@ -9,9 +9,9 @@
     import Car from "./Car";
 
     export default {
-        data() {
+        data: function () {
             return {
-                msg: 'Welcome to Your Vue.js App'
+                msg: "Welcome to Your Vue.js App"
             }
         },
         components: {
