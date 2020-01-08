@@ -17,7 +17,7 @@
     import Car from "./Car";
 
     export default {
-        data: function () {
+        data() {
             return {
                 msg: "Welcome to Your Vue.js App",
                 cars: [

@@ -22,7 +22,7 @@
                 default: new Date().getFullYear(),
             },
         },
-        data: function () {
+        data() {
             return {
                 defaultCarName: defaultCarName,
             }
