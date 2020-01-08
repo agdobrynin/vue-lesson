@@ -2,12 +2,16 @@
     <div>
         <h1>{{ printCarName }}</h1>
         <p>{{ printCarYear }}</p>
-        <button @click="changeName" v-if="carName !== defaultCarName">new name</button>
+        <div v-if="carName !== defaultCarName">
+            <button @click="changeName">new name</button>
+            <button @click="addCar">Add car</button>
+        </div>
     </div>
 </template>
 
 <script>
     import Helpers from "./utils/Helpers";
+
     const defaultCarName = "Train";
 
     export default {
@@ -21,6 +25,10 @@
                 type: Number,
                 default: new Date().getFullYear(),
             },
+            counter: {
+                type: Number,
+                default: 0,
+            }
         },
         data() {
             return {
@@ -31,6 +39,9 @@
             changeName() {
                 this.carName = "Lotus";
                 this.$emit('changedCarName', this.carName);
+            },
+            addCar() {
+                this.$emit('addCarToStock', this.counter += 1);
             }
         },
         computed: {
