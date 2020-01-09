@@ -1,18 +1,23 @@
 <template>
     <div>
-        <h1>{{ msg }}</h1>
         <app-counter></app-counter>
         <h4>Cars:</h4>
         <ul>
             <li v-for="car in cars">{{car.name}}</li>
         </ul>
-        <app-car v-for="car in cars"
-                 :carName="car.name" :carYear="car.year"
+        <app-car v-for="(car, index) in cars"
+                 :carName="car.name" :carYear="car.year" :carOrigin="car.origin"
                  @changedCarName="car.name = $event"
                  @addCarToStock="counter = $event"
                  :content="counter"
-        ></app-car>
-        <app-car></app-car>
+        >
+            <p slot="index">array index = {{ index }}</p>
+            <h3 slot="initCarName">{{ car.origin }}</h3>
+        </app-car>
+
+        <app-car>
+            <p slot="index">Пустой без параметров</p>
+        </app-car>
     </div>
 </template>
 
@@ -23,10 +28,9 @@
     export default {
         data() {
             return {
-                msg: "Welcome to Your Vue.js App",
                 cars: [
-                    {name: "Fiat", year: 2012},
-                    {name: "Bugatti", year: 2018},
+                    {name: "Fiat", year: 2012, origin: "Fiat",},
+                    {name: "Bugatti", year: 2018, origin: "Bugatti",},
                 ],
             }
         },

@@ -1,11 +1,13 @@
 <template>
     <div>
         <h1>{{ printCarName }}</h1>
+        <slot name="initCarName"></slot>
         <p>{{ printCarYear }}</p>
         <div v-if="carName !== defaultCarName">
             <button @click="changeName">new name</button>
             <button @click="addCar">Add car to stock</button>
         </div>
+        <slot name="index"></slot>
     </div>
 </template>
 
@@ -18,6 +20,9 @@
     export default {
         name: "Car",
         props: {
+            carOrigin:{
+
+            },
             carName: {
                 type: String,
                 default: defaultCarName,
@@ -33,9 +38,11 @@
             }
         },
         methods: {
-            changeName() {
-                this.carName = "Lotus";
-                this.$emit('changedCarName', this.carName);
+            changeName(event) {
+                const isOld = this.carName === this.carOrigin;
+                this.carName = isOld ? "Lotus" : this.carOrigin;
+                event.target.innerText = isOld ? "return origin" : "new name";
+                this.$emit("changedCarName", this.carName);
             },
             addCar() {
                 eventEmmiter.$emit("addCarToStock");
@@ -61,5 +68,9 @@
 
     p {
         color: gray;
+    }
+    h3 {
+        font-size: 1.1em;
+        color: #0A0;
     }
 </style>
